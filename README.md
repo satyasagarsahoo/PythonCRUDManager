@@ -13,16 +13,25 @@ Django: Backend framework for handling CRUD operations.
 HTML & CSS: For creating a clean and responsive user interface.
 
 **Installation**
+
 **Clone the Repository :**
 git clone https://github.com/satyasagarsahoo/PythonCRUDManager.git
+
+
 **Navigate to the Project Directory :**
 cd PythonBasicCRUDapp
+
+
 **Set Up a Virtual Environment:**
 python -m venv env
 source env/bin/activate       # For Linux/macOS
 env\Scripts\activate          # For Windows
+
+
 **Install Required Dependencies**
 pip install -r requirements.txt
+
+
 **Apply Migrations**
 python manage.py migrate
 **Run the Development Server**
