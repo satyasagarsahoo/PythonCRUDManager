@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Item Form</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212; /* Dark background */
+            color: #a8ff60; /* Light green text */
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 50%;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #1a1a1a; /* Slightly lighter dark for contrast */
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8ff60;
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin: 1rem 0 0.5rem;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #a8ff60;
+            border-radius: 5px;
+            background-color: #121212;
+            color: #a8ff60;
+        }
+
+        textarea {
+            resize: none;
+            height: 100px;
+        }
+
+        button {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: #a8ff60;
+            color: #121212;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #94e344;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #757575; /* Subtle gray for placeholders */
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ item.name|default:"Create Item" }}</h1>
+        <form method="post">
+            {% csrf_token %}
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter item name" value="{{ item.name|default:'' }}">
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" placeholder="Enter item description">{{ item.description|default:'' }}</textarea>
+
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" step="0.01" placeholder="Enter item price" value="{{ item.price|default:'' }}">
+
+            <button type="submit">Save</button>
+        </form>
+    </div>
+</body>
+</html>

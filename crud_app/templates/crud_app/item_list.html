@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Items List</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212; /* Dark background */
+            color: #a8ff60; /* Light green text */
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background-color: #1a1a1a; /* Slightly lighter dark for contrast */
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8ff60;
+            margin-bottom: 1.5rem;
+        }
+
+        a {
+            color: #a8ff60;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #94e344;
+        }
+
+        .add-button {
+            display: block;
+            width: fit-content;
+            margin: 1rem auto;
+            padding: 0.5rem 1.5rem;
+            background-color: #a8ff60;
+            color: #121212;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .add-button:hover {
+            background-color: #3d3d3d;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 0.75rem;
+            border-bottom: 1px solid #333; /* Subtle border */
+        }
+
+        th {
+            background-color: #202020;
+            color: #a8ff60;
+        }
+
+        tr:nth-child(even) {
+            background-color: #1f1f1f;
+        }
+
+        tr:hover {
+            background-color: #2a2a2a;
+        }
+
+        .action-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        button {
+            background-color: #a8ff60;
+            color: #121212;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #94e344;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BASIC CRUD APP IN DJANGO AND SQLITE3</h1>
+        <a class="add-button" href="{% url 'item_create' %}">Add New Item</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                    <tr>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.description }}</td>
+                        <td>{{ item.price }}</td>
+                        <td>
+                            <div class="action-links">
+                                <a href="{% url 'item_update' item.id %}"><button>Edit</button></a>
+                                <a href="{% url 'item_delete' item.id %}"><button>Delete</button></a>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
