@@ -34,8 +34,12 @@ pip install -r requirements.txt
 
 **Apply Migrations**
 python manage.py migrate
+
+
 **Run the Development Server**
 python manage.py runserver
+
+
 **Access the Application**
 http://127.0.0.1:8000 (in the browser)
 
